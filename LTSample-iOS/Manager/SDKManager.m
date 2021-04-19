@@ -41,8 +41,8 @@
     
     [StatusVC sharedInstance];
     
-    if (options.licenseKey.length == 0) {
-        [AppUtility alertWithString:@"Please set UserInfo.plist and OtherInfo.plist in project." consoleString:@"Please set UserInfo.plist and OtherInfo.plist in project."];
+    if (options.licenseKey.length == 0 || options.url.length == 0) {
+        [AppUtility alertWithString:@"Empty Config" consoleString:@"Please set Config.plist in project."];
         if (completion) {
             completion(NO);
         }

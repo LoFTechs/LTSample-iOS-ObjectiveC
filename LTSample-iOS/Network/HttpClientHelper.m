@@ -19,6 +19,13 @@
 @implementation HttpClientHelper
 
 - (void)loginWithAccountID:(NSString *)accountID password:(NSString *)password completion:(void (^)(ReturnCode returnCode))completion {
+    if ([Config ltsdkAPI].length == 0 || [Config turnkey].length == 0 || [Config brandID].length == 0) {
+        if (completion) {
+            completion(ReturnCodeFailed);
+        }
+        return;
+    }
+    
     if (self.accessToken.length == 0 || [[NSDate date] timeIntervalSince1970] > self.accessTokenTime) {
         [self getAccessTokenWithCompletion:^(BOOL success) {
             if (success) {
@@ -58,6 +65,13 @@
 }
 
 - (void)registerWithAccountID:(NSString *)accountID password:(NSString *)password completion:(void (^)(ReturnCode returnCode))completion {
+    if ([Config ltsdkAPI].length == 0 || [Config turnkey].length == 0 || [Config brandID].length == 0) {
+        if (completion) {
+            completion(ReturnCodeFailed);
+        }
+        return;
+    }
+    
     if (self.accessToken.length == 0 || [[NSDate date] timeIntervalSince1970] > self.accessTokenTime) {
         [self getAccessTokenWithCompletion:^(BOOL success) {
             if (success) {
@@ -114,6 +128,13 @@
 }
 
 - (void)getAccessTokenWithCompletion:(void (^)(BOOL success))completion {
+    if ([Config ltsdkAuthAPI].length == 0 || [Config developerAccount].length == 0 || [Config developerPassword].length == 0) {
+        if (completion) {
+            completion(NO);
+        }
+        return;
+    }
+    
     NSMutableURLRequest *request = [NSMutableURLRequest initWithEndpoint:@"oauth2/getDeveloperToken" domain:[Config ltsdkAuthAPI]];
     request.HTTPMethod = @"POST";
     [request setValue:[Config brandID] forHTTPHeaderField:@"Brand-Id"];

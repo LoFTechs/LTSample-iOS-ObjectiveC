@@ -9,6 +9,7 @@
 #import "SDKManager.h"
 #import "AppUtility+UI.h"
 #import "AppDelegate.h"
+#import "Config.h"
 
 @interface RegisterVC ()
 @property (nonatomic, strong) IBOutlet UITextField *tfAccountID;
@@ -64,8 +65,12 @@
         [appDelegate changeMainVC];
         
     } else if (returnCode == ReturnCodeFailed) {
-        [AppUtility alertWithString:@"Failed." consoleString:@""];
-
+        if ([Config ltsdkAPI].length == 0 || [Config turnkey].length == 0 || [Config brandID].length == 0) {
+            [AppUtility alertWithString:@"Empty Config" consoleString:@"Please set Config.plist in project."];
+        } else {
+            [AppUtility alertWithString:@"Failed." consoleString:@""];
+        }
+        
     } else if (returnCode == ReturnCodeWrongPassword) {
         [AppUtility alertWithString:@"Wrong password." consoleString:@""];
 

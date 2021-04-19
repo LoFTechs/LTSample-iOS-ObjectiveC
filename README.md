@@ -2,6 +2,9 @@
 ![Platform](https://img.shields.io/badge/platform-iOS-orange.svg)
 ![Languages](https://img.shields.io/badge/language-ObjectiveC-orange.svg)
 
+[![cocoapods](https://img.shields.io/cocoapods/v/LTSDK)](https://github.com/LoFTechs/LTSDK-iOS)
+
+
 ## Introduction
 
 With LT SDK, you can build your own customized application with Call and IM function. This documentary provides a guideline that demonstrates how to build and configure an in-app message and call using LT SDK.
@@ -14,24 +17,27 @@ This section explains the steps you need to take before testing the iOS sample a
 
 ## Installation
 
-To use our iOS sample, you should first install [LTSample for iOS](https://github.com/LoFTechs/LTSDK-iOS) 1.0.0 or higher.
+To use our iOS sample, you should first install [LTSample for iOS](https://github.com/LoFTechs/LTSample-iOS-ObjectiveC) 1.0.0 or higher.
 ### Requirements
 
-|Sample|iOS
-|---|---|---|---|
-| LTSample |10.0 or higher
+|Sample|iOS|
+|---|---|
+| LTSample |10.0 or higher|
 
 
 ### LT Sample
 
-You can **clone** the project from the [LTSample repository](https://github.com/LoFTechs/LTSDK-iOS). 
+You can **clone** the project from the [LTSample repository](https://github.com/LoFTechs/LTSample-iOS-ObjectiveC). 
 
 ```
 // Clone this repository
-git clone git@github.com:LoFTechs/LTSDK-iOS.git
+git clone git@github.com:LoFTechs/LTSample-iOS-ObjectiveC.git
 
 // Move to the LT sample
-cd LTSample/
+cd LTSample-iOS-ObjectiveC/
+
+// Install LT SDK
+pod install
 ```
 
 ### Install LT SDK for iOS
@@ -47,7 +53,7 @@ pod 'LTCallSDK'
 pod 'LTIMSDK'
 ``` 
 
-Set Develop api data and password to `gradle.properties`.
+Set Develop api data and password to `LTSample-iOS/Config/Config.plist`.
 
 ```properties
 Brand_ID="<YOUR_BRAND_ID>"
